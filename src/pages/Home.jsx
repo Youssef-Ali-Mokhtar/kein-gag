@@ -1,15 +1,22 @@
 import pageClasses from './Page.module.css';
 import PostsList from './post/PostsList';
-
-const dummyData = [
-    {id:"_ONE", title:'title one', description:'description one'},
-    {id:"_TWO", title:'title two', description:'description two'},
-    {id:"_THREE", title:'title three', description:'description three'},
-];
+import { useEffect, useState } from "react";
 
 const Home = () => {
+    const [posts, setPosts] = useState(null);
+    useEffect(()=>{
+        const fetchPosts = async ()=>{
+            const response = await fetch('http://localhost:4000/api/posts/');
+            const json = await response.json();
+            if(response.ok) {
+                setPosts(json);
+            }
+        }
+        fetchPosts();
+    }, []);
+
     return ( <div className={`${pageClasses['page']} ${pageClasses['home']}`}>
-        <PostsList data={dummyData}/>
+        {posts && <PostsList data={posts}/>}
     </div> );
 }
 
