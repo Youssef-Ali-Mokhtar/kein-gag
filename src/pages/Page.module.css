@@ -3,3 +3,9 @@
     min-height: 100vh;
     padding-top: 60px;
 }
+
+.home {
+    width: 600px;
+    min-height: 100vh;
+    margin: 0px 10px;
+}
