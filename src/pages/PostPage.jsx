@@ -6,9 +6,9 @@ const PostPage = () => {
     const [post, setPost] = useState(null);
     const { id } = useParams();
 
-    useEffect(()=>{
+    useEffect(()=> {
         const fetchPosts = async ()=>{
-            const response = await fetch('http://localhost:4000/api/posts/'+id);
+            const response = await fetch('http://localhost:4000/api/posts/' + id);
             const json = await response.json();
             if(response.ok) {
                 setPost(json);
