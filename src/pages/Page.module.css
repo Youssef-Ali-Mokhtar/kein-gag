@@ -9,3 +9,42 @@
     min-height: 100vh;
     margin: 0px 10px;
 }
+
+.post-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px;
+}
+
+.post-form > * {
+    width: 300px;
+    outline: none;
+    border-radius: 5px;
+    margin: 3px;
+    background-color: rgb(0, 0, 0, 0);
+    border:1px solid rgb(100,100,100);
+    color:white;
+    font-size: 20px;
+    font-weight: bold;
+    padding:10px;
+}
+
+.post-form > textarea {
+    height: 150px;
+    resize: none;
+    font-size: 14px;
+    font-weight:lighter;
+
+}
+
+.post-form > button {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 320px) {
+    .post-form > * {
+        width: 100%;
+    }
+}
