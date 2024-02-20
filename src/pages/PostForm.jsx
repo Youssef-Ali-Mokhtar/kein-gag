@@ -49,12 +49,14 @@ const PostForm = () => {
                 name="title"
                 onChange={handleInputData}
                 value={postData.title}
+                required
             />
             <textarea
                 placeholder="Description"
                 name="description"
                 onChange={handleInputData}
                 value={postData.description}
+                required
             />
             <button>
                 Submit

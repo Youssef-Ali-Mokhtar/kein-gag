@@ -43,6 +43,17 @@
     cursor: pointer;
 }
 
+.delete-button {
+    padding: 5px 10px;
+    background-color: #ce2b2b;
+    border: none;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+}
+
 @media screen and (max-width: 320px) {
     .post-form > * {
         width: 100%;
