@@ -1,12 +1,14 @@
 import pageClasses from './Page.module.css';
 import PostsList from './post/PostsList';
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import FloatingButton from '../components/FloatingButton';
 import { useNavigate } from 'react-router-dom';
+import { usePostsContext } from '../hooks/usePostsContext';
 
 const Home = () => {
-    const [posts, setPosts] = useState(null);
+    const {posts, setPosts} = usePostsContext();
     const navigate = useNavigate();
+
     useEffect(()=>{
         const fetchPosts = async () => {
             try {
@@ -21,7 +23,7 @@ const Home = () => {
             }
           };
         fetchPosts();
-    }, []);
+    }, [setPosts]);
 
     const postFormHandler = ()=> {
         navigate('/post-form');
