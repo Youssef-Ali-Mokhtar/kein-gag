@@ -7,7 +7,7 @@ const PostsList = ({ data }) => {
         {
             data.map(post =>
                 <Link key={post._id} to={'/posts/'+post._id}>
-                    <Post title={post.title} description={post.description}/>
+                    <Post title={post.title} description={post.description} date={post.createdAt}/>
                 </Link>
             )
         }

@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom';
 
 const PostForm = () => {
     const [postData, setPostData] = useState({title:'', description:''});
+    const [error, setError] = useState(null);
+    const [emptyFields, setEmptyFields] = useState([]);
     const navigate = useNavigate();
 
     const handleSubmit = (e)=> {
@@ -19,12 +21,17 @@ const PostForm = () => {
 
             try {
                 const response = await fetch('http://localhost:4000/api/posts/', options);
+
+                const json = await response.json();
                 if (!response.ok) {
+                    setError(json.message);
+                    setEmptyFields(json.emptyFields);
                     throw new Error('Network response was not ok');
                   }
-                const json = await response.json();
                 console.log(json);
                 setPostData({title:'', description:''});
+                setError(null);
+                setEmptyFields([]);
                 navigate('/');
             } catch(error) {
                 console.log('Error: '+ error.message);
@@ -49,18 +56,25 @@ const PostForm = () => {
                 name="title"
                 onChange={handleInputData}
                 value={postData.title}
-                required
+                className={
+                    (!postData.title) && emptyFields.includes('title')? Classes['empty-field']:""
+                }
             />
             <textarea
                 placeholder="Description"
                 name="description"
                 onChange={handleInputData}
                 value={postData.description}
-                required
+                className={
+                    (!postData.description) && emptyFields.includes('description')? Classes['empty-field']:""
+                }
             />
             <button>
                 Submit
             </button>
+            {error&&<>
+                <p>{error}</p>
+            </>}
         </form>
     </div> );
 }
