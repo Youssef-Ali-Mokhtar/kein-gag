@@ -54,6 +54,14 @@
     cursor: pointer;
 }
 
+.empty-field {
+    border-color:red;
+}
+
+.post-form > p {
+    border: none;
+}
+
 @media screen and (max-width: 320px) {
     .post-form > * {
         width: 100%;
