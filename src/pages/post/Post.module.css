@@ -14,7 +14,8 @@ a {
     color:white;
 }
 
-p {
+.post > p {
     color: rgb(100,100,100);
     font-size: 0.7rem;
 }
+
